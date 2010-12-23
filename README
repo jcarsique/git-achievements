@@ -39,6 +39,16 @@ For example add the following to the end of your ~/.bash_profile
 export PATH="$PATH:~/git/git-achievements"
 alias git="git-achievements"
 
+To ensure your achievements repo is sharable across hosts,
+add a path to your local git-achievements repo to your .gitconfig:
+
+    git config --global achievement.dir /path/to/your/repo
+
+The path can also contain an environment variable, such as $HOME:
+
+    git config --global achievement.dir '$HOME/git-repos/git-achievements'
+
+
 You can get your first achievement by running
 
     git achievements --help
