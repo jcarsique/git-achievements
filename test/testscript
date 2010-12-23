@@ -17,6 +17,8 @@ function runtest() {
 
     git init
 
+    git config --global achievement.dir "$(pwd)"
+
     touch README
     git add README
     git commit -s -m "First commit"
@@ -73,14 +75,18 @@ function git() {
     git-achievements "$@"
 }
 
-# cleanup
+# backup real files
+mv -f ~/.gitconfig ~/.gitconfig.bak
 mv -f ~/.git-achievements.log ~/.git-achievements.bak
 mv -f ~/.git-achievements-action.log ~/.git-achievements-action.bak
-rm -rf testapplication
-rm -rf testapplication.push
 
 runtest
 git achievements -a
+git achievements -p
 
+# cleanup and restore
+rm -rf testapplication
+rm -rf testapplication.push
+mv -f ~/.gitconfig.bak ~/.gitconfig
 mv -f ~/.git-achievements.bak ~/.git-achievements.log
 mv -f ~/.git-achievements-action.bak ~/.git-achievements-action.log
