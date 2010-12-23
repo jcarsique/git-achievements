@@ -365,6 +365,16 @@ function publish_achievements
       esac
     fi
 
+    if ! [ -w "${git_achievements_dir}" ] ; then
+      # suggest remediation to user
+      {
+      echo "Error: unable to write to \"${git_achievements_dir}\""
+      echo 'Try: git config --global achievement.dir '\''$HOME/path/to/repo'\'
+      } >&2
+      # bail if the directory is not writable
+      exit 1
+    fi
+
     cd "${git_achievements_dir}"
 
     user=`git config --global user.name`
