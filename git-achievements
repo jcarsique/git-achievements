@@ -232,7 +232,7 @@ function check_for_achievements
             ;;
         diff )
             case $2 in
-                --cached )
+                --cached | --staged )
                 count_unlock_achievement "Goldsmith" "Reviewed patches before committing with git diff --cached." "diff --cached"
                 ;;
             esac
