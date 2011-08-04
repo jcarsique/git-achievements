@@ -155,7 +155,7 @@ function check_for_achievements
 
     case $2 in
         --help )
-            unlock_achievement "Student" "Accessed the documentation for a command with git [command] --help"
+            unlock_achievement "Student" "Accessed the documentation for a command with git [command] --help or git help [command]"
             return
             ;;
     esac
@@ -252,6 +252,9 @@ function check_for_achievements
             ;;
         grep )
             count_unlock_achievement "Fisherman" "Look for specified patterns in the current repository with git grep." "$command"
+            ;;
+        help )
+            unlock_achievement "Student" "Accessed the documentation for a command with git [command] --help or git help [command]"
             ;;
         imap-send )
             count_unlock_achievement "Postman" "Send a collection of patches from stdin to an IMAP folder with git imap-send" "$command"
