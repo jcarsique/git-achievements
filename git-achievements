@@ -369,14 +369,14 @@ function clean_logged_achievements() {
 
 function publish_achievements
 {
-    target="git-achievements"
+    target="$0"
     git_achievements="$(which $target)"
     git_achievements_dir="$(dirname "${git_achievements}")"
-    cd $git_achievements_dir
+    cd "${git_achievements_dir}"
     while [ -L "${target}" ]; do
-      target=`readlink $target`
-      cd `dirname $target`
-      target=`basename $target`
+      target="$(readlink $target)"
+      cd "$(dirname $target)"
+      target="$(basename $target)"
     done 
 
     user=`git config user.name`
