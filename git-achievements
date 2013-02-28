@@ -372,9 +372,54 @@ function clean_logged_achievements() {
 
 function publish_achievements
 {
+<<<<<<< HEAD
     target="$0"
     git_achievements="$(which $target)"
     git_achievements_dir="$(dirname "${git_achievements}")"
+||||||| merged common ancestors
+    git_achievements="$(which git-achievements)"
+    git_achievements_dir="$(dirname "${git_achievements}")"
+    if [ -L "${git_achievements}" ]; then
+      case "$(dirname $(readlink ${git_achievements}))" in
+        /*)
+          git_achievements_dir="$(dirname $(readlink ${git_achievements}))"
+          ;;
+        *)
+          git_achievements_dir="${git_achievements_dir}/$(dirname $(readlink ${git_achievements}))"
+          ;;
+      esac
+    fi
+
+=======
+    git_achievements="$(which git-achievements)"
+    git_achievements_dir="$(git config --global achievement.dir | envsubst)"
+    if [ -z "${git_achievements_dir}" ] ; then
+      # assume original behavior
+      git_achievements_dir="$(dirname "${git_achievements}")"
+    fi
+
+    if [ -L "${git_achievements}" ]; then
+      case "$(dirname $(readlink ${git_achievements}))" in
+        /*)
+          git_achievements_dir="$(dirname $(readlink ${git_achievements}))"
+          ;;
+        *)
+          git_achievements_dir="${git_achievements_dir}/$(dirname $(readlink ${git_achievements}))"
+          ;;
+      esac
+    fi
+
+    if ! [ -w "${git_achievements_dir}" ] ; then
+      # suggest remediation to user
+      {
+      echo "Error: unable to write to \"${git_achievements_dir}\""
+      echo 'Try: git config --global achievement.dir '\''$HOME/path/to/repo'\'
+      } >&2
+      # bail if the directory is not writable
+      exit 1
+    fi
+
+>>>>>>> b98174c608da24e46d62b14c0c6280a49e0de91f
     cd "${git_achievements_dir}"
     while [ -L "${target}" ]; do
       target="$(readlink $target)"
