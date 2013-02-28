@@ -372,26 +372,8 @@ function clean_logged_achievements() {
 
 function publish_achievements
 {
-<<<<<<< HEAD
     target="$0"
     git_achievements="$(which $target)"
-    git_achievements_dir="$(dirname "${git_achievements}")"
-||||||| merged common ancestors
-    git_achievements="$(which git-achievements)"
-    git_achievements_dir="$(dirname "${git_achievements}")"
-    if [ -L "${git_achievements}" ]; then
-      case "$(dirname $(readlink ${git_achievements}))" in
-        /*)
-          git_achievements_dir="$(dirname $(readlink ${git_achievements}))"
-          ;;
-        *)
-          git_achievements_dir="${git_achievements_dir}/$(dirname $(readlink ${git_achievements}))"
-          ;;
-      esac
-    fi
-
-=======
-    git_achievements="$(which git-achievements)"
     git_achievements_dir="$(git config --global achievement.dir | envsubst)"
     if [ -z "${git_achievements_dir}" ] ; then
       # assume original behavior
@@ -419,7 +401,6 @@ function publish_achievements
       exit 1
     fi
 
->>>>>>> b98174c608da24e46d62b14c0c6280a49e0de91f
     cd "${git_achievements_dir}"
     while [ -L "${target}" ]; do
       target="$(readlink $target)"
