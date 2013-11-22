@@ -484,7 +484,7 @@ ACHIEVEMENTSLOGFILE="$HOME/.git-achievements.log"
 
 if [ ! "$1" = "achievements" ] ; then
     trap "" PIPE # don't fail if user doesn't read all the output
-    git "$@"
+    LANG=en git "$@"
     r=$?
     if [ ! ${r} -eq 0 ] ; then
         exit $r
