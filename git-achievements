@@ -51,7 +51,7 @@ function git_achievements_command
 function log_action
 {
     local expansion=$(unalias_command "$1")
-    
+
     if [[ $expansion ]] ; then
         shift
         echo "$expansion $@" >> "${ACTIONLOGFILE}"
@@ -100,7 +100,7 @@ function count_command
     if [ ${count:-0} -eq 1 ] ; then
         powerof2="1"
     fi
-    #echo "cmd: $1 powerof2: $powerof2 power: $power count: $count"
+    echo "cmd: $1 powerof2: $powerof2 power: $power count: $count" >&2
 }
 
 function hcount_unlock_achievement
@@ -168,7 +168,7 @@ function check_for_achievements
     if [[ $expansion ]] ; then
       # not a real inventor
       unlock_achievement "Garage Inventor" "Used a custom alias for a Git command"
-      
+
       # get actual command, removing any additional parameters from the command
       command=$(echo "$expansion" | awk '{ print $1; }')
     fi
@@ -406,7 +406,7 @@ function publish_achievements
       target="$(readlink $target)"
       cd "$(dirname $target)"
       target="$(basename $target)"
-    done 
+    done
 
     user=`git config user.name`
 
@@ -525,3 +525,17 @@ fi
 
 log_action $@
 check_for_achievements $@
+
+function fix {
+  count_unlock_achievement "Fisherman" "Look for specified patterns in the current repository with git grep." "grep"
+  # unlock_achievement "Inventor ($1)" "Used a command that isn't part of the built in Git command"
+  count_unlock_achievement "Locksmith" "Add Signed-off-by line at the end of the commit log message using git commit -s." "commit -s"
+  count_unlock_achievement "Messenger" "Applied a patch using git am." "am"
+  count_unlock_achievement "Pilgrim" "Performed a rebase using git rebase --onto." "rebase --onto"
+  count_unlock_achievement "Product Manager" "Stash the changes in a dirty working directory away with git stash." "stash"
+  count_unlock_achievement "Stone Mason" "Added files to the index area for inclusion in the next commit with git add" "add"
+  count_unlock_achievement "Traveler" "Streamed changes between another rcs with git svn or git p4." "svn"
+  count_unlock_achievement "Tree Trimmer" "Rewrite branches with git filter-branch" "filter-branch"
+}
+
+#fix
