@@ -2,6 +2,7 @@
 <title>Julien Carsique's Git Achievements</title>
 <description></description>
 <link></link>
+<item><title>Master Seamstress (Level 9)</title><description>amended a commit with git commit --amend.</description></item>
 <item><title>Inventor (contacts)</title><description>Used a command that isn't part of the built in Git command</description></item>
 <item><title>Master Presenter (Level 12)</title><description>Shows one or more objects (blobs, trees, tags and commits) with git show</description></item>
 <item><title>Miller (Level 6)</title><description>Add only part of a file to the stage 4177 times with git add -p.</description></item>
@@ -21,5 +22,4 @@
 <item><title>Inventor (up)</title><description>Used a command that isn't part of the built in Git command</description></item>
 <item><title>Master Cleaning lady (Level 10)</title><description>Remove untracked files from the working tree with git clean</description></item>
 <item><title>Master Cleaning lady (Level 9)</title><description>Remove untracked files from the working tree with git clean</description></item>
-<item><title>Master Author (Level 11)</title><description>Made 2^Level commits using git commit.</description></item>
 </channel></rss>
