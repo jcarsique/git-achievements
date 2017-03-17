@@ -2,6 +2,7 @@
 <title>Julien Carsique's Git Achievements</title>
 <description></description>
 <link></link>
+<item><title>Inventor (dag)</title><description>Used a command that isn't part of the built in Git command</description></item>
 <item><title>Master Blacksmith (Level 10)</title><description>Created a branch using git checkout -b.</description></item>
 <item><title>Inventor (lfs)</title><description>Used a command that isn't part of the built in Git command</description></item>
 <item><title>Apprentice Carpenter (Level 1)</title><description>Custom git hooks are installed which help catch issues before they are shared.</description></item>
@@ -21,5 +22,4 @@
 <item><title>Inventor (map-branches)</title><description>Used a command that isn't part of the built in Git command</description></item>
 <item><title>Inventor (map)</title><description>Used a command that isn't part of the built in Git command</description></item>
 <item><title>Inventor (thaw)</title><description>Used a command that isn't part of the built in Git command</description></item>
-<item><title>Inventor (freeze)</title><description>Used a command that isn't part of the built in Git command</description></item>
 </channel></rss>
